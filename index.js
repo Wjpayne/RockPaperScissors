@@ -25,6 +25,7 @@ function getPlayerChoice() {
 
 let playerScore = 0;
 let computerScore = 0;
+let ties = 0;
 
 //logic to play single round
 
@@ -33,8 +34,10 @@ function playRound() {
   const computerSelection = getComputerChoice();
 
   if (playerSelection === computerSelection) {
+    ties++;
     alert(`It's a tie! Both chose ${playerSelection}.`);
     console.log(`It's a tie! Both chose ${playerSelection}.`);
+    
   } else if (
     (playerSelection === "rock" && computerSelection === "scissors") ||
     (playerSelection === "paper" && computerSelection === "rock") ||
@@ -55,7 +58,7 @@ function playRound() {
 //play a game of 5 rounds
 
 function playGame() {
-  for (let round = 1; round <= 5; round++) {
+  for (let round = 1; round <= 5 + ties; round++) {
     console.log(`Round ${round}:`);
     playRound();
   }
