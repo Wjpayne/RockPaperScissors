@@ -1,3 +1,26 @@
+//get computer choice
+
+function getComputerChoice() {
+  const choices = ["rock", "paper", "scissors"];
+  const randomIndex = Math.floor(Math.random() * choices.length);
+  return choices[randomIndex];
+}
+
+//get player choice
+
+function getPlayerChoice() {
+  const choice = prompt(
+    "Enter your choice (rock, paper, or scissors):"
+  ).toLowerCase();
+  if (["rock", "paper", "scissors"].includes(choice)) {
+    return choice;
+  } else {
+    alert("Invalid choice. Please try again.");
+    console.log("Invalid choice. Please try again.");
+    return getPlayerChoice();
+  }
+}
+
 //keep track of score
 
 let playerScore = 0;
@@ -27,27 +50,6 @@ function playRound() {
   }
 
   console.log(`Score - You: ${playerScore}, Computer: ${computerScore}`);
-}
-
-//get player choice
-
-function getPlayerChoice() {
-  const choice = prompt(
-    "Enter your choice (rock, paper, or scissors):"
-  ).toLowerCase();
-  if (["rock", "paper", "scissors"].includes(choice)) {
-    return choice;
-  } else {
-    console.log("Invalid choice. Please try again.");
-    return getPlayerChoice();
-  }
-}
-
-//get computer choice
-function getComputerChoice() {
-  const choices = ["rock", "paper", "scissors"];
-  const randomIndex = Math.floor(Math.random() * choices.length);
-  return choices[randomIndex];
 }
 
 //play a game of 5 rounds
