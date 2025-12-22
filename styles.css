@@ -1,0 +1,33 @@
+body {     
+    font-family: Arial, sans-serif; 
+    background-color: black; 
+    margin: 0; 
+    padding: 20px; 
+}
+
+h1 { 
+    color: white; 
+    text-align: center; 
+}
+
+h2 { 
+    color: white; 
+    text-align: center; 
+}
+
+.choice-button { 
+    padding: 10px 20px; 
+    margin: 10px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+.choice-button button {
+    margin: 0 10px; 
+    padding: 10px 20px; 
+    font-size: 16px; 
+    cursor: pointer; 
+}

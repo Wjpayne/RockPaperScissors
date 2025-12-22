@@ -9,13 +9,9 @@ function getComputerChoice() {
 //get player choice
 
 function getPlayerChoice() {
-  const choice = prompt(
-    "Enter your choice (rock, paper, or scissors):"
-  ).toLowerCase();
   if (["rock", "paper", "scissors"].includes(choice)) {
     return choice;
   } else {
-    alert("Invalid choice. Please try again.");
     console.log("Invalid choice. Please try again.");
     return getPlayerChoice();
   }
@@ -35,20 +31,19 @@ function playRound() {
 
   if (playerSelection === computerSelection) {
     ties++;
-    alert(`It's a tie! Both chose ${playerSelection}.`);
+
     console.log(`It's a tie! Both chose ${playerSelection}.`);
-    
   } else if (
     (playerSelection === "rock" && computerSelection === "scissors") ||
     (playerSelection === "paper" && computerSelection === "rock") ||
     (playerSelection === "scissors" && computerSelection === "paper")
   ) {
     playerScore++;
-    alert(`You win! ${playerSelection} beats ${computerSelection}.`);
+
     console.log(`You win! ${playerSelection} beats ${computerSelection}.`);
   } else {
     computerScore++;
-    alert(`You lose! ${computerSelection} beats ${playerSelection}.`);
+
     console.log(`You lose! ${computerSelection} beats ${playerSelection}.`);
   }
 
@@ -64,13 +59,10 @@ function playGame() {
   }
 
   if (playerScore > computerScore) {
-    alert("Congratulations! You won the game!");
     console.log("Congratulations! You won the game!");
   } else if (computerScore > playerScore) {
-    alert("Sorry, you lost the game.");
     console.log("Sorry, you lost the game.");
   } else {
-    alert("The game is a tie!");
     console.log("The game is a tie!");
   }
 }
