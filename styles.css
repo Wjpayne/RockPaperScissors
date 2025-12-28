@@ -1,6 +1,6 @@
-  * {
-    box-sizing: border-box;
-  }
+* {
+  box-sizing: border-box;
+}
 
 body {
   font-family: Arial, sans-serif;
@@ -61,19 +61,27 @@ h2 {
   cursor: pointer;
 }
 
- @media (max-width: 600px) {
-    h1 {
-      font-size: 1.6rem;
-    }
-
-    button {
-      width: 100%;
-      font-size: 1.2rem;
-      padding: 16px;
-    }
-
-    .buttons {
-      flex-direction: column;
-      gap: 10px;
-    }
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.6rem;
   }
+
+  button {
+    width: 100%;
+    font-size: 1.2rem;
+    padding: 16px;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 10px;
+    color: white;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 10px;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 10px;
+    color: white;
+  }
+}
