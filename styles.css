@@ -73,15 +73,11 @@ h2 {
     -webkit-appearance: none;
     appearance: none;
     border-radius: 10px;
-    color: white;
+    color: black;
   }
 
   .buttons {
     flex-direction: column;
     gap: 10px;
-    -webkit-appearance: none;
-    appearance: none;
-    border-radius: 10px;
-    color: white;
   }
 }
