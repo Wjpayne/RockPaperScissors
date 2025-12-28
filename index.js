@@ -50,3 +50,17 @@ function playRound(playerSelection) {
     }
   }
 }
+
+// reset the game
+
+// RESET GAME FUNCTION
+function resetGame() {
+  playerScore = 0;
+  computerScore = 0;
+  ties = 0;
+  roundsPlayed = 0;
+
+  document.getElementById("result").textContent = "Game reset. Make your choice!";
+  document.getElementById("score").textContent =
+    `Score — You: 0 | Computer: 0 | Ties: 0`;
+}

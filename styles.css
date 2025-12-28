@@ -1,3 +1,7 @@
+  * {
+    box-sizing: border-box;
+  }
+
 body {
   font-family: Arial, sans-serif;
   background-color: black;
@@ -23,6 +27,7 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .choice-button button {
@@ -39,3 +44,36 @@ h2 {
   color: white;
   text-align: center;
 }
+.reset-container {
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.reset {
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+ @media (max-width: 600px) {
+    h1 {
+      font-size: 1.6rem;
+    }
+
+    button {
+      width: 100%;
+      font-size: 1.2rem;
+      padding: 16px;
+    }
+
+    .buttons {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
