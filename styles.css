@@ -5,8 +5,8 @@
 body {
   font-family: Arial, sans-serif;
   background-color: black;
-  margin: 0;
   padding: 20px;
+  margin: 0;
 }
 
 h1 {
@@ -31,7 +31,7 @@ h2 {
 }
 
 .choice-button button {
-  margin: 0 10px;
+  margin: 10px;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
