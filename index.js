@@ -36,8 +36,9 @@ function playRound(playerSelection) {
   }
 
   document.getElementById("result").textContent = message;
-  document.getElementById("score").textContent =
-    `Score — You: ${playerScore} | Computer: ${computerScore} | Ties: ${ties}`;
+  document.getElementById(
+    "score"
+  ).textContent = `Score — You: ${playerScore} | Computer: ${computerScore} | Ties: ${ties}`;
 
   // game over
   if (roundsPlayed === 5) {
@@ -53,14 +54,15 @@ function playRound(playerSelection) {
 
 // reset the game
 
-// RESET GAME FUNCTION
 function resetGame() {
   playerScore = 0;
   computerScore = 0;
   ties = 0;
   roundsPlayed = 0;
 
-  document.getElementById("result").textContent = "Game reset. Make your choice!";
-  document.getElementById("score").textContent =
-    `Score — You: 0 | Computer: 0 | Ties: 0`;
+  const resultEl = document.getElementById("result");
+  const scoreEl = document.getElementById("score");
+  resultEl.textContent = "Make your move!";
+  scoreEl.textContent = `Score — You: ${playerScore} | Computer: ${computerScore} | Ties: ${ties}`;
+  
 }
