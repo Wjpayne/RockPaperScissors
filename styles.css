@@ -35,7 +35,7 @@ h2 {
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
-  width: 110px;
+  width: 140px;
 }
 
 #result,
@@ -76,7 +76,6 @@ h2 {
     border-radius: 10px;
     color: black;
     margin: 10px;
-    
   }
 
   .buttons {
