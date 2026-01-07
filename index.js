@@ -1,25 +1,28 @@
+class RockPaperScissors {
+  constructor(maxRounds = 5) {
+    this.choices = ["rock", "paper", "scissors"];
+    this.playerScore = 0;
+    this.computerScore = 0;
+    this.ties = 0;
+    this.roundsPlayed = 0;
+    this.maxRounds = maxRounds;
+  }
+
 // get computer choice
-function getComputerChoice() {
-  const choices = ["rock", "paper", "scissors"];
-  const randomIndex = Math.floor(Math.random() * choices.length);
-  return choices[randomIndex];
+getComputerChoice() {
+  const randomIndex = Math.floor(Math.random() * this.choices.length);
+  return this.choices[randomIndex];
 }
 
-// keep track of score
-let playerScore = 0;
-let computerScore = 0;
-let ties = 0;
-let roundsPlayed = 0;
-
 // play a single round
-function playRound(playerSelection) {
-  if (roundsPlayed >= 5) return;
+playRound(playerSelection) {
+  if (this.roundsPlayed >= this.maxRounds) return;
 
-  const computerSelection = getComputerChoice();
+  const computerSelection = this.getComputerChoice();
   let message = "";
 
   if (playerSelection === computerSelection) {
-    ties++;
+    this.ties++;
     message = `It's a tie! Both chose ${playerSelection}.`;
   } else if (
     (playerSelection === "rock" && computerSelection === "scissors") ||
