@@ -1,71 +1,98 @@
-class RockPaperScissors {
-  constructor(maxRounds = 5) {
-    this.choices = ["rock", "paper", "scissors"];
+// ------------------------
+// Game Class
+// ------------------------
+class Game {
+  constructor(rounds = 5) {
     this.playerScore = 0;
     this.computerScore = 0;
     this.ties = 0;
     this.roundsPlayed = 0;
-    this.maxRounds = maxRounds;
+    this.maxRounds = rounds;
   }
 
-// get computer choice
-getComputerChoice() {
-  const randomIndex = Math.floor(Math.random() * this.choices.length);
-  return this.choices[randomIndex];
-}
-
-// play a single round
-playRound(playerSelection) {
-  if (this.roundsPlayed >= this.maxRounds) return;
-
-  const computerSelection = this.getComputerChoice();
-  let message = "";
-
-  if (playerSelection === computerSelection) {
-    this.ties++;
-    message = `It's a tie! Both chose ${playerSelection}.`;
-  } else if (
-    (playerSelection === "rock" && computerSelection === "scissors") ||
-    (playerSelection === "paper" && computerSelection === "rock") ||
-    (playerSelection === "scissors" && computerSelection === "paper")
-  ) {
-    playerScore++;
-    roundsPlayed++;
-    message = `You win! ${playerSelection} beats ${computerSelection}.`;
-  } else {
-    computerScore++;
-    roundsPlayed++;
-    message = `You lose! ${computerSelection} beats ${playerSelection}.`;
+  // Generate a random computer choice
+  getComputerChoice() {
+    const choices = ["rock", "paper", "scissors"];
+    const randomIndex = Math.floor(Math.random() * choices.length);
+    return choices[randomIndex];
   }
 
-  document.getElementById("result").textContent = message;
-  document.getElementById(
-    "score"
-  ).textContent = `Score — You: ${playerScore} | Computer: ${computerScore} | Ties: ${ties}`;
+  // Play a single round
+  playRound(playerSelection) {
+    if (this.roundsPlayed >= this.maxRounds) return;
 
-  // game over
-  if (roundsPlayed === 5) {
-    if (playerScore > computerScore) {
-      document.getElementById("result").textContent += " 🎉 You won the game!";
-    } else if (computerScore > playerScore) {
-      document.getElementById("result").textContent += " 😢 You lost the game.";
+    const computerSelection = this.getComputerChoice();
+    let message = "";
+
+    if (playerSelection === computerSelection) {
+      this.ties++;
+      message = `It's a tie! Both chose ${playerSelection}.`;
+    } else if (
+      (playerSelection === "rock" && computerSelection === "scissors") ||
+      (playerSelection === "paper" && computerSelection === "rock") ||
+      (playerSelection === "scissors" && computerSelection === "paper")
+    ) {
+      this.playerScore++;
+      this.roundsPlayed++;
+      message = `You win! ${playerSelection} beats ${computerSelection}.`;
     } else {
-      document.getElementById("result").textContent += " 🤝 The game is a tie!";
+      this.computerScore++;
+      this.roundsPlayed++;
+      message = `You lose! ${computerSelection} beats ${playerSelection}.`;
+    }
+
+    this.updateUI(message);
+    this.checkGameOver();
+  }
+
+  // Update the DOM with the latest results
+  updateUI(message) {
+    const resultEl = document.getElementById("result");
+    const scoreEl = document.getElementById("score");
+
+    resultEl.textContent = message;
+    scoreEl.textContent = `Score — You: ${this.playerScore} | Computer: ${this.computerScore} | Ties: ${this.ties}`;
+  }
+
+  // Check if the game is over
+  checkGameOver() {
+    if (this.roundsPlayed === this.maxRounds) {
+      const resultEl = document.getElementById("result");
+
+      if (this.playerScore > this.computerScore) {
+        resultEl.textContent += " 🎉 You won the game!";
+      } else if (this.computerScore > this.playerScore) {
+        resultEl.textContent += " 😢 You lost the game.";
+      } else {
+        resultEl.textContent += " 🤝 The game is a tie!";
+      }
     }
   }
+
+  // Reset the game state
+  resetGame() {
+    this.playerScore = 0;
+    this.computerScore = 0;
+    this.ties = 0;
+    this.roundsPlayed = 0;
+
+    const resultEl = document.getElementById("result");
+    const scoreEl = document.getElementById("score");
+
+    resultEl.textContent = "Make your move!";
+    scoreEl.textContent = `Score — You: ${this.playerScore} | Computer: ${this.computerScore} | Ties: ${this.ties}`;
+  }
 }
 
-// reset the game
+// ------------------------
+// Instantiate the game
+// ------------------------
+const game = new Game();
 
-function resetGame() {
-  playerScore = 0;
-  computerScore = 0;
-  ties = 0;
-  roundsPlayed = 0;
-
-  const resultEl = document.getElementById("result");
-  const scoreEl = document.getElementById("score");
-  resultEl.textContent = "Make your move!";
-  scoreEl.textContent = `Score — You: ${playerScore} | Computer: ${computerScore} | Ties: ${ties}`;
-  
-}
+// ------------------------
+// Connect buttons to game methods
+// ------------------------
+document.querySelector(".rock").addEventListener("click", () => game.playRound("rock"));
+document.querySelector(".paper").addEventListener("click", () => game.playRound("paper"));
+document.querySelector(".scissors").addEventListener("click", () => game.playRound("scissors"));
+document.querySelector(".reset").addEventListener("click", () => game.resetGame());
